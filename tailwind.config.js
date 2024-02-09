@@ -8,6 +8,9 @@ export default {
   ],
   theme: {
     extend: {},
+    fontFamily: {
+      roboto: ["Roboto"],
+    },
   },
   plugins: [require("flowbite/plugin")],
 };
