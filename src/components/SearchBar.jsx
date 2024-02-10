@@ -13,13 +13,18 @@ export default function SearchBar() {
   useEffect(() => {
     const fetchRecipes = async () => {
       try {
-        const res = await axios.get(
-          `${BASE_URL}/recipes/autocomplete?apiKey=${
-            import.meta.env.VITE_APIKEY
-          }&number=10&query=${searchData}`
-        );
-        const data = res.data;
-        setRecipes(data);
+        if (searchData !== "") {
+          const res = await axios.get(
+            `${BASE_URL}/recipes/autocomplete?apiKey=${
+              import.meta.env.VITE_APIKEY
+            }&number=10&query=${searchData}`
+          );
+          const data = res.data;
+          setRecipes(data);
+          setError("")
+        } else {
+          return;
+        }
       } catch (error) {
         setError(error.message);
       }
@@ -46,13 +51,10 @@ export default function SearchBar() {
             placeholder="Search for a recipe"
             className="w-full h-12 px-4 border border-gray-300 focus:border-gray-700 focus:ring-0"
             value={searchData}
-            onChange={(e) => {
-              setSearchData(e.target.value);
-              setError("");
-            }}
+            onChange={(e) => (setSearchData(e.target.value))}
           />
           <button
-            className="bg-black text-white font-bold h-12 w-16"
+            className="bg-black text-white font-bold h-12 w-16 cursor-pointer hover:scale-90"
             disabled={!searchData}
             type="submit"
           >
