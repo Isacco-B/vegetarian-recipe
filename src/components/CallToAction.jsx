@@ -22,12 +22,12 @@ export default function CallToAction() {
             <input
               type="text"
               placeholder="E-Mail Address"
-              className="border-none md:w-2/3 h-12 px-4"
+              className="border border-gray-300 focus:border-gray-700 focus:ring-0 md:w-2/3 h-12 px-4"
               value={form}
               onChange={(e) => setForm(e.target.value)}
             />
             <button
-              className="bg-black text-white font-bold h-12 w-16"
+              className="bg-black text-white font-bold h-12 w-16 cursor-pointer hover:scale-90"
               disabled={!form}
             >
               GO
