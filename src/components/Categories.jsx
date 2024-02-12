@@ -45,8 +45,8 @@ export default function Categories() {
   }, [cuisine]);
 
   return (
-    <div className="w-full mt-6 px-4 border-b">
-      <h2 className="font-bold text-3xl tracking-widest mb-6">
+    <div className="w-full mt-6 border-b">
+      <h2 className="font-bold text-3xl tracking-widest mb-6 px-4">
         I WANT TO FIND
       </h2>
       <div className="flex flex-wrap items-center justify-center gap-4 w-full">
