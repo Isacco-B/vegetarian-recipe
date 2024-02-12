@@ -129,7 +129,7 @@ export default function RecipePage() {
         <h2 className="font-bold text-2xl tracking-widest mb-6 ">
           SIMILAR RECIPES
         </h2>
-        <RecipesList limit={8} diet={diets && diets[0]} name={"similar"} />
+        <RecipesList limit={8} diet={"vegetarian" }name={"similar"} />
       </div>
     </article>
   );

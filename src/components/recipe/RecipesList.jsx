@@ -24,13 +24,15 @@ export default function RecipesList({ limit, type, diet, name }) {
           setLoading(false);
         } else {
           const tags = [];
-          if (diet) tags.push(diet);
+          diet ? tags.push(type) : tags.push("vegetarian");
           if (type) tags.push(type);
           const tagsString = tags.join(",");
           const res = await axios.get(
             `${BASE_URL}/recipes/random?apiKey=${
               import.meta.env.VITE_APIKEY
-            }&number=${limit || 4}&include-tags=${tagsString}`
+            }&number=${
+              limit || 4
+            }&include-tags=${tagsString}&exclude-tags=Pescetarian,Paleo,Primal,Whole30`
           );
           const data = res.data;
           const recipes = _.get(data, "recipes", []);
@@ -48,7 +50,7 @@ export default function RecipesList({ limit, type, diet, name }) {
 
   const handleShowMore = () => {
     setRecipeLimit(showMore ? recipes.length : 4);
-    setShowMore((prev)=> !prev)
+    setShowMore((prev) => !prev);
   };
 
   if (loading || error) {
@@ -69,7 +71,8 @@ export default function RecipesList({ limit, type, diet, name }) {
             className="text-md md:text-lg font-light hover:underline cursor-pointer"
             onClick={handleShowMore}
           >
-            {showMore ? "See more": "See less"} <span className="font-normal">{name} recipes</span>
+            {showMore ? "See more" : "See less"}{" "}
+            <span className="font-normal">{name} recipes</span>
           </button>
           <FaLongArrowAltRight />
         </div>

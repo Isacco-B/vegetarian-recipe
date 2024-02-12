@@ -25,7 +25,7 @@ export default function Categories() {
           const res = await axios.get(
             `${BASE_URL}/recipes/random?apiKey=${
               import.meta.env.VITE_APIKEY
-            }&number=${4}&cuisine=${cuisine}`
+            }&number=${4}&include-tags=vegetarian&exclude-tags=Pescetarian,Paleo,Primal,Whole30&cuisine=${cuisine}`
           );
           const data = res.data;
           const recipes = _.get(data, "recipes", []);
