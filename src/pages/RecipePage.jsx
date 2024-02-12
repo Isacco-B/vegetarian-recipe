@@ -62,65 +62,67 @@ export default function RecipePage() {
     );
   }
   return (
-    <article className="min-h-screen max-w-[1070px] mx-auto flex flex-col pt-24 p-4 gap-10">
-      <h1 className="font-bold text-2xl md:text-4xl mb-4 tracking-widest text-center uppercase">
-        {title}
-      </h1>
-      {diets && diets.length !== 0 && (
-        <div className="flex flex-col md:flex-row gap-1 md:gap-3 items-baseline">
-          <h3 className="font-bold text-1xl tracking-widest text-start">
-            DIETS:
-          </h3>
-          <ul className="flex flex-wrap">
-            {diets.map((diet, i) => (
-              <li
-                key={i}
-                className="text-lg font-light underline leading-9 mr-2"
-              >
-                {diet}
-              </li>
-            ))}
-          </ul>
+    <article className="min-h-screen max-w-[1070px] mx-auto flex flex-col pt-24 gap-10">
+      <div className="flex flex-col gap-10 px-4">
+        <h1 className="font-bold text-2xl md:text-4xl mb-4 tracking-widest text-center uppercase">
+          {title}
+        </h1>
+        {diets && diets.length !== 0 && (
+          <div className="flex flex-col md:flex-row gap-1 md:gap-3 items-baseline">
+            <h3 className="font-bold text-1xl tracking-widest text-start">
+              DIETS:
+            </h3>
+            <ul className="flex flex-wrap">
+              {diets.map((diet, i) => (
+                <li
+                  key={i}
+                  className="text-lg font-light underline leading-9 mr-2"
+                >
+                  {diet}
+                </li>
+              ))}
+            </ul>
+          </div>
+        )}
+        <img
+          src={image}
+          alt={title}
+          className="max-h-[600px] w-full object-cover rounded-3xl"
+        />
+        <div className="flex justify-around items-center w-full md:w-1/2 mx-auto">
+          <Servings
+            content={servings || 0}
+            icon={<CiForkAndKnife size={24} />}
+            style={"w-20 h-20 md:w-24 md:h-24"}
+          />
+          <ReadyInMinutes
+            content={readyInMinutes || 0}
+            icon={<CiClock2 size={24} />}
+            style={"w-20 h-20 md:w-24 md:h-24"}
+          />
+          <HealthScore
+            content={healthScore || 0}
+            icon={<CiHeart size={24} />}
+            style={"w-20 h-20 md:w-24 md:h-24"}
+          />
         </div>
-      )}
-      <img
-        src={image}
-        alt={title}
-        className="max-h-[600px] w-full object-cover rounded-3xl"
-      />
-      <div className="flex justify-around items-center w-full md:w-1/2 mx-auto">
-        <Servings
-          content={servings || 0}
-          icon={<CiForkAndKnife size={24} />}
-          style={"w-24 h-24"}
-        />
-        <ReadyInMinutes
-          content={readyInMinutes || 0}
-          icon={<CiClock2 size={24} />}
-          style={"w-24 h-24"}
-        />
-        <HealthScore
-          content={healthScore || 0}
-          icon={<CiHeart size={24} />}
-          style={"w-24 h-24"}
-        />
-      </div>
-      <div>
-        <h2 className="font-bold text-2xl tracking-widest mb-3 ">SUMMARY</h2>
-        <p
-          dangerouslySetInnerHTML={{ __html: summary && summary }}
-          className="text-xl font-light  font-roboto leading-9"
-        ></p>
-      </div>
-      <div>
-        <h2 className="font-bold text-2xl tracking-widest mb-3 ">
-          INSTRUCTIONS
-        </h2>
-        <p
-          dangerouslySetInnerHTML={{ __html: instructions && instructions }}
-          className="text-xl font-light font-roboto leading-9"
-        ></p>
-        <p className="text-xl font-light leading-9"></p>
+        <div>
+          <h2 className="font-bold text-2xl tracking-widest mb-3 ">SUMMARY</h2>
+          <p
+            dangerouslySetInnerHTML={{ __html: summary && summary }}
+            className="text-xl font-light  font-roboto leading-9"
+          ></p>
+        </div>
+        <div>
+          <h2 className="font-bold text-2xl tracking-widest mb-3 ">
+            INSTRUCTIONS
+          </h2>
+          <p
+            dangerouslySetInnerHTML={{ __html: instructions && instructions }}
+            className="text-xl font-light font-roboto leading-9"
+          ></p>
+          <p className="text-xl font-light leading-9"></p>
+        </div>
       </div>
       <div>
         <CallToAction />
@@ -129,7 +131,7 @@ export default function RecipePage() {
         <h2 className="font-bold text-2xl tracking-widest mb-6 ">
           SIMILAR RECIPES
         </h2>
-        <RecipesList limit={8} diet={"vegetarian" }name={"similar"} />
+        <RecipesList limit={8} diet={"vegetarian"} name={"similar"} />
       </div>
     </article>
   );
