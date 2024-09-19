@@ -1,6 +1,6 @@
 # Start2Impact React Project
 
-- A vegetarian recipe website built with React, utilizing the Spoonacular API. Features a responsive design for a seamless user experience..
+- A vegetarian recipe website built with React, utilizing the Spoonacular API. Features a responsive design for a seamless user experience.
 - License: MIT
 
 Here's what the site should include:
